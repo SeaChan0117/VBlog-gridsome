@@ -1,0 +1,86 @@
+html{
+    font-size: 14px;
+}
+.el-header, .el-footer, .el-main {
+    text-align: center;
+}
+.el-header {
+    background-image: linear-gradient(120deg, #2690F9, #FC2D2D);
+    height: 20rem;
+    color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main-content {
+    width: 80rem;
+    margin: auto;
+}
+
+.project-name {
+    margin-top: 0;
+    margin-bottom: 0.1rem;
+}
+
+.project-tagline {
+    margin-bottom: 2rem;
+    font-weight: normal;
+    opacity: 0.7;
+}
+
+.btn:hover {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:active,
+a:hover {
+    outline: 0;
+}
+
+.btn {
+    padding: 0.55rem 1rem;
+    display: inline-block;
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 0.3rem;
+    transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+}
+
+a {
+    color: #1e6bb8;
+    text-decoration: none;
+}
+
+.btn+.btn {
+    margin-left: 1rem;
+}
+
+.markdown-body img {
+    max-width: 100%;
+    box-sizing: content-box;
+    background-color: #fff;
+    border-style: none;
+}
+nav[aria-label="Pagination Navigation"]>a{
+    border: 1px solid #ccc;
+    width: 20px;
+    display: inline-block;
+    text-align: center;
+    margin-right: 5px;
+    border-radius: 2px;
+}
+nav[aria-label="Pagination Navigation"]>a.active {
+    background: #4f5050;
+    color: #ffffff;
+}

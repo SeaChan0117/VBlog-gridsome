@@ -1,0 +1,17 @@
+{
+  "name": "vblog-gridsome",
+  "private": true,
+  "scripts": {
+    "develop": "gridsome develop",
+    "explore": "gridsome explore",
+    "build": "gridsome build"
+  },
+  "dependencies": {
+    "@gridsome/plugin-sitemap": "^0.4.0",
+    "axios": "^0.21.1",
+    "dayjs": "^1.10.6",
+    "element-ui": "^2.15.3",
+    "gridsome": "^0.7.0",
+    "markdown-it": "^12.1.0"
+  }
+}
