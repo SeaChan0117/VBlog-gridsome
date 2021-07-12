@@ -6,7 +6,7 @@
         <el-row>
           <el-col :span="16">
                             <span>
-                                <g-link style="text-decoration:none;cursor:pointer" :to="'/blog-detail/' + item.id">
+                                <g-link style="text-decoration:none;cursor:pointer" :to="'/blogs/' + item.id">
                                     <i class="el-icon-edit-outline"></i>&nbsp;&nbsp; {{title(item.files)}}
                                 </g-link>
                             </span>

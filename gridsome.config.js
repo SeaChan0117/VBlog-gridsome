@@ -10,7 +10,7 @@ module.exports = {
   templates: {
     Blogs: [
       {
-        path: '/blog-detail/:id',
+        path: '/blogs/:id',
         component: './src/templates/BlogDetail.vue'
       }
     ]

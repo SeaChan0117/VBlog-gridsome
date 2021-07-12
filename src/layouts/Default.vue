@@ -63,7 +63,7 @@
                   <i class="el-icon-star-off"></i>
                   <span slot="title">最新动态</span>
                 </el-menu-item>
-                <el-menu-item index="/relation">
+                <el-menu-item :index="socialIndex()">
                   <i class="el-icon-mobile-phone"></i>
                   <span slot="title">社交圈</span>
                 </el-menu-item>
@@ -78,8 +78,26 @@
               </el-menu>
             </el-card>
           </el-col>
-          <el-col :span="19" style="padding-left:10px">
+          <el-col :span="19" style="padding-left:10px" class="main-body">
+            <el-tabs
+                v-if="socialTabsShow"
+                v-model="activeName" type="card"
+                @tab-click="socialTabClick"
+            >
+              <el-tab-pane name="followers">
+                <span slot="label">
+                    {{ '粉丝' + socialInfo.followers }}
+                </span>
+              </el-tab-pane>
+              <el-tab-pane name="following">
+                <span slot="label">
+                    {{ '关注' + socialInfo.following }}
+                </span>
+              </el-tab-pane>
+            </el-tabs>
+            <!--页面slot start-->
             <slot/>
+            <!--页面slot end-->
           </el-col>
         </el-row>
       </div>
@@ -116,6 +134,16 @@ query {
 metadata {
 siteName
 }
+
+allUser{
+edges{
+node{
+id
+followers
+following
+}
+}
+}
 }
 </static-query>
 
@@ -124,18 +152,35 @@ export default {
   data() {
     return {
       avatarUrl: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
-      location: ''
+      location: '',
+      socialTabsShow: false,
+      activeName: '/social-followers'
     }
   },
   methods: {
     handleCommand(command) {
       window.open(command, '_blank')
+    },
+    socialIndex() {
+      return this.$route.path.includes('/social-following') ? '/social-following' : '/social-followers'
+    },
+    socialTabClick(tab) {
+      this.$router.push({
+        path: `/social-${tab.name}`
+      })
     }
+  },
+  created() {
+    this.socialTabsShow = this.$route.path.includes('/social-followers') || this.$route.path.includes('/social-following')
+    this.activeName = this.$route.path.includes('/social-following') ? 'following' : 'followers'
   },
   computed: {
     activeRouter() {
-      return this.$route.path || '/'
-    }
+      return `/${this.$route.path.split('/')[1]}`
+    },
+    socialInfo() {
+      return this.$page.allUser.edges[0].node
+    },
   }
 }
 </script>
