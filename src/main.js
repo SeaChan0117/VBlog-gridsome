@@ -20,6 +20,14 @@ function copy (message) {
   return status
 }
 export default function (Vue, { router, head, isClient }) {
+  Vue.mixin({
+    data() {
+      return {
+        GITHUB_OWNER_URL: 'https://github.com/users/seachan0117'
+      }
+    }
+  })
+
   Vue.use(ElementUI)
   Vue.filter('date', (value, format = 'YYYY-MM-DD HH:mm:ss') => {
     return dayjs(value).format(format)

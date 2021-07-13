@@ -14,5 +14,17 @@ module.exports = {
         component: './src/templates/BlogDetail.vue'
       }
     ]
+    // Followers: [
+    //   {
+    //     path: '/followers/:username',
+    //     component: './src/templates/UserInfo.vue'
+    //   }
+    // ],
+    // Following: [
+    //   {
+    //     path: '/following/:username',
+    //     component: './src/templates/UserInfo.vue'
+    //   }
+    // ]
   }
 }

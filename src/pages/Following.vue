@@ -1,16 +1,15 @@
 <template>
   <Layout>
-    <SocialInfoList :socialInfoData="followers"></SocialInfoList>
+    <SocialInfoList :socialInfoData="following" :basePath="'/following'"></SocialInfoList>
 
-    <div style="text-align: center">
-      <Pager :info="$page.allFollowers.pageInfo"/>
+    <div style="text-align: center" v-if="!$route.query.username">
+      <Pager :info="$page.allFollowing.pageInfo"/>
     </div>
   </Layout>
 </template>
 
 <page-query>
 query($page: Int){
-
 allUser{
 edges{
 node{
@@ -21,12 +20,12 @@ following
 }
 }
 
-allFollowers(perPage:9,page:$page) @paginate{
+
+allFollowing(perPage:9,page:$page) @paginate{
 pageInfo {
 totalPages
 currentPage
 }
-
 edges{
 node{
 id
@@ -36,7 +35,6 @@ html_url
 }
 }
 }
-
 }
 </page-query>
 
@@ -48,10 +46,13 @@ export default {
     SocialInfoList,
     Pager
   },
-  name: "SocialFollowers",
+  name: "SocialFollowing",
   computed: {
-    followers() {
-      return this.$page.allFollowers.edges.map(item => item.node)
+    socialInfo() {
+      return this.$page.allUser.edges[0].node
+    },
+    following() {
+      return this.$page.allFollowing.edges.map(item => item.node)
     }
   }
 }

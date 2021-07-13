@@ -4,8 +4,8 @@
       <div>
         <h1 class="project-name">SeaChan0117</h1>
         <h2 class="project-tagline">欢迎来到SeaChan0117的个人博客。</h2>
-        <a :href="'https://github.com/SeaChan0117'" class="btn" target="_blank">GitHub主页</a>
-        <a href="https://github.com/GitHub-Laziji/vblog" class="btn" target="_blank">博客源码</a>
+        <a :href="GITHUB_OWNER_URL" class="btn" target="_blank">GitHub主页</a>
+        <a :href="GITHUB_OWNER_URL + '/VBlog-gridsome'" class="btn" target="_blank">博客源码</a>
       </div>
     </el-header>
 
@@ -108,8 +108,8 @@
         <el-col :span="10">
           <div>
             © 2021 GitHub-sechan0117&emsp;&emsp;
-            <a href="https://github.com/GitHub-Laziji" target="_blank">Profile</a>&emsp;&emsp;
-            <a href="https://github.com/GitHub-Laziji/vblog" target="_blank">VBlog</a>
+            <a :href="GITHUB_OWNER_URL" target="_blank">Profile</a>&emsp;&emsp;
+            <a :href="GITHUB_OWNER_URL + '/VBlog-gridsome'" target="_blank">VBlog</a>
           </div>
         </el-col>
         <el-col :span="4">
@@ -141,6 +141,8 @@ node{
 id
 followers
 following
+avatar_url
+location
 }
 }
 }
@@ -154,7 +156,7 @@ export default {
       avatarUrl: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
       location: '',
       socialTabsShow: false,
-      activeName: '/social-followers'
+      activeName: '/followers'
     }
   },
   methods: {
@@ -162,17 +164,19 @@ export default {
       window.open(command, '_blank')
     },
     socialIndex() {
-      return this.$route.path.includes('/social-following') ? '/social-following' : '/social-followers'
+      return this.$route.path.includes('/following') ? '/following' : '/followers'
     },
     socialTabClick(tab) {
       this.$router.push({
-        path: `/social-${tab.name}`
+        path: `/${tab.name}`
       })
     }
   },
   created() {
-    this.socialTabsShow = this.$route.path.includes('/social-followers') || this.$route.path.includes('/social-following')
-    this.activeName = this.$route.path.includes('/social-following') ? 'following' : 'followers'
+    this.socialTabsShow = this.$route.path.includes('/followers') || this.$route.path.includes('/following')
+    this.activeName = this.$route.path.includes('/following') ? 'following' : 'followers'
+    this.avatarUrl = this.$static.allUser.edges[0].node.avatar_url || ''
+    this.location = this.$static.allUser.edges[0].node.location || ''
   },
   computed: {
     activeRouter() {

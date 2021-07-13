@@ -5,8 +5,8 @@
         <span>{{blog.title}}</span>
       </div>
       <div style="font-size: 0.9rem;line-height: 1.5;color: #606c71;">
-        发布 {{blog.createTime}}
-        <br> 更新 {{blog.updateTime}}
+        发布 {{blog.createTime | date}}
+        <br> 更新 {{blog.updateTime | date}}
       </div>
       <div style="font-size: 1.1rem;line-height: 1.5;color: #303133;border-bottom: 1px solid #E4E7ED;padding: 5px 0px 5px 0px">
         <pre style="font-family: '微软雅黑'">{{blog.description}}</pre>
