@@ -71,7 +71,7 @@
                   <i class="el-icon-edit-outline"></i>
                   <span slot="title">博客列表</span>
                 </el-menu-item>
-                <el-menu-item index="/project-open-source">
+                <el-menu-item index="/project">
                   <i class="el-icon-service"></i>
                   <span slot="title">开源项目</span>
                 </el-menu-item>

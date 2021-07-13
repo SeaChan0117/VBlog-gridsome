@@ -82,6 +82,30 @@ module.exports = function (api) {
                 }
             })
         }
+
+        // 开源项目
+        const projectCollection = addCollection('Project')
+        if (userNode.public_repos > 0) {
+            const pageTotal1 = Math.ceil(userNode.public_repos / 100)
+            const allReq1 = []
+            for (let i = 1; i <= pageTotal1; i++) {
+                allReq1.push(axios.get(`${process.env.GITHUB_OWNER_API_URL}/repos?page=${i}&per_page=100`))
+            }
+            const projectData = await Promise.all(allReq1)
+            projectData.forEach(dataPrePage => {
+                for (const item of dataPrePage.data) {
+                    // const pro = JSON.stringify(item)
+                    Object.keys(item).forEach(key => {
+                        if (item[key] === null) {
+                            console.log(key)
+                            item[key] = ''
+                        }
+                    })
+                    const pro = Object.assign({}, item)
+                    projectCollection.addNode(pro)
+                }
+            })
+        }
     })
 
     api.createPages(({createPage}) => {
