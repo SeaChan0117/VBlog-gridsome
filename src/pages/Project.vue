@@ -14,7 +14,7 @@
           <el-row>
             <el-col :span="16">
                             <span>
-                                <g-link style="text-decoration:none;cursor:pointer" :to="'/project/' + item.name">
+                                <g-link style="text-decoration:none;cursor:pointer" :to="'/project/' + item.id">
                                     <i class="el-icon-service"></i>&nbsp;&nbsp; {{ item.name }}
                                 </g-link>
                             </span>
@@ -24,7 +24,7 @@
                 <el-button @click="goGithub(item.html_url)" style="padding: 3px 0" type="text" icon="el-icon-back">
                   前往GitHub
                 </el-button>
-                <el-button @click="$share('/user/project/details/'+item.name)" style="padding: 3px 0" type="text"
+                <el-button @click="$share('/project/'+item.id)" style="padding: 3px 0" type="text"
                            icon="el-icon-share"></el-button>
               </div>
             </el-col>
@@ -54,7 +54,7 @@
             </el-col>
             <el-col :span="8" style="text-align: right;">
               <el-tag size="small" type="danger" v-if="item.license">{{ item['license']['spdx_id'] }}</el-tag>
-              <el-tag size="small" type="success">{{ item.language }}</el-tag>
+              <el-tag size="small" type="success" v-if="item.language">{{ item.language }}</el-tag>
             </el-col>
           </el-row>
         </div>

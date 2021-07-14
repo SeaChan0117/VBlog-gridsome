@@ -13,18 +13,12 @@ module.exports = {
         path: '/blogs/:id',
         component: './src/templates/BlogDetail.vue'
       }
+    ],
+    Project: [
+      {
+        path: '/project/:id',
+        component: './src/templates/ProDetail.vue'
+      }
     ]
-    // Followers: [
-    //   {
-    //     path: '/followers/:username',
-    //     component: './src/templates/UserInfo.vue'
-    //   }
-    // ],
-    // Following: [
-    //   {
-    //     path: '/following/:username',
-    //     component: './src/templates/UserInfo.vue'
-    //   }
-    // ]
   }
 }

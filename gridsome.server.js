@@ -97,7 +97,6 @@ module.exports = function (api) {
                     // const pro = JSON.stringify(item)
                     Object.keys(item).forEach(key => {
                         if (item[key] === null) {
-                            console.log(key)
                             item[key] = ''
                         }
                     })
