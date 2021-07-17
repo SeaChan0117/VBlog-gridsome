@@ -106,7 +106,7 @@ export default {
   components: {
     Pager
   },
-  name: "Project",
+  name: "Projects",
   data() {
     return {
       searchKey: ''

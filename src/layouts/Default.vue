@@ -71,7 +71,7 @@
                   <i class="el-icon-edit-outline"></i>
                   <span slot="title">博客列表</span>
                 </el-menu-item>
-                <el-menu-item index="/project">
+                <el-menu-item index="/projects">
                   <i class="el-icon-service"></i>
                   <span slot="title">开源项目</span>
                 </el-menu-item>
@@ -180,7 +180,7 @@ export default {
   },
   computed: {
     activeRouter() {
-      return `/${this.$route.path.split('/')[1]}`
+      return this.$route.path.includes('/project/') ? '/projects' : `/${this.$route.path.split('/')[1]}`
     },
     socialInfo() {
       return this.$page.allUser.edges[0].node

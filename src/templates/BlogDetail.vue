@@ -31,12 +31,8 @@
 
 <page-query>
 query($id: ID!){
-allBlogs(filter:{id:{in: [$id]}}) {
-edges{
-node{
+blogs(id: $id) {
 blog
-}
-}
 }
 }
 </page-query>
@@ -66,7 +62,7 @@ export default {
     }
   },
   async created() {
-    this.curBlog = JSON.parse(this.$page.allBlogs.edges[0].node.blog) || {}
+    this.curBlog = JSON.parse(this.$page.blogs.blog) || {}
     const { data } = await axios.get(`https://api.github.com/gists/${this.$route.params.id}`)
     this.$set(this.curBlog, 'content', data.files[this.title(this.curBlog.files)].content)
   }

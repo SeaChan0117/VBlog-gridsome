@@ -23,7 +23,7 @@ export default function (Vue, { router, head, isClient }) {
   Vue.mixin({
     data() {
       return {
-        GITHUB_OWNER_URL: 'https://github.com/users/seachan0117'
+        GITHUB_OWNER_URL: 'https://github.com/seachan0117'
       }
     }
   })
@@ -39,8 +39,7 @@ export default function (Vue, { router, head, isClient }) {
     if (!message) {
       message = window.location
     } else {
-      let arr = (window.location + '').split('#')
-      message = arr[0] + '#' + message
+      message = window.origin + message
     }
     if (copy(message)) {
       Vue.prototype.$confirm('链接已复制,去分享给好友吧!!', '分享', {
